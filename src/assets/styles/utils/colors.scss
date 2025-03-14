@@ -1,0 +1,78 @@
+:root {
+  /* Light Mode Colors */
+  --light-primary: #0079FF;
+  --light-secondary: #697C9A;
+  --light-tertiary: #4B6A9B;
+  --light-dark: #2B3442;
+  --light-background: #F6F8FF;
+  --light-white: #FEFEFE;
+
+  /* Light Mode RGB */
+  --light-primary-rgb: 0, 121, 255;
+  --light-secondary-rgb: 105, 124, 154;
+  --light-tertiary-rgb: 75, 106, 155;
+  --light-dark-rgb: 43, 52, 66;
+  --light-background-rgb: 246, 248, 255;
+  --light-white-rgb: 254, 254, 254;
+
+  /* Light Mode HSL */
+  --light-primary-hsl: 212, 100%, 50%;
+  --light-secondary-hsl: 217, 20%, 51%;
+  --light-tertiary-hsl: 217, 35%, 45%;
+  --light-dark-hsl: 217, 21%, 21%;
+  --light-background-hsl: 227, 100%, 98%;
+  --light-white-hsl: 0, 0%, 100%;
+
+  /* Dark Mode Colors */
+  --dark-primary: #0079FF;
+  --dark-white: #FFFFFF;
+  --dark-dark-1: #141D2F;
+  --dark-dark-2: #1E2A47;
+
+  /* Dark Mode RGB */
+  --dark-primary-rgb: 0, 121, 255;
+  --dark-white-rgb: 255, 255, 255;
+  --dark-dark-1-rgb: 20, 29, 47;
+  --dark-dark-2-rgb: 30, 42, 71;
+
+  /* Dark Mode HSL */
+  --dark-primary-hsl: 212, 100%, 50%;
+  --dark-white-hsl: 0, 0%, 100%;
+  --dark-dark-1-hsl: 220, 40%, 13%;
+  --dark-dark-2-hsl: 222, 41%, 20%;
+}
+
+/* Light Mode Theme */
+.light-mode {
+  --primary: var(--light-primary);
+  --secondary: var(--light-secondary);
+  --tertiary: var(--light-tertiary);
+  --dark: var(--light-dark);
+  --background: var(--light-background);
+  --white: var(--light-white);
+}
+
+/* Dark Mode Theme */
+.dark-mode {
+  --primary: var(--dark-primary);
+  --white: var(--dark-white);
+  --dark-1: var(--dark-dark-1);
+  --dark-2: var(--dark-dark-2);
+  --background: var(--dark-dark-1);
+}
+
+/* Example Usage */
+body {
+//   background-color: var(--background);
+//   color: var(--dark);
+}
+
+.button {
+  background-color: var(--primary);
+  color: var(--white);
+}
+
+.dark-mode .button {
+  background-color: var(--dark-dark-2);
+  color: var(--white);
+}
