@@ -1,35 +1,6 @@
+// Light mode - default theme
 .light {
-  --primary: 0, 121, 255;
-  --secondary: 105, 124, 154;
-  --tertiary: 75, 106, 155;
-  --dark: 43, 52, 66;
-  --font-color-1: 75, 106, 155;
-  --bg1: 246, 248, 255;
-  --bg2: 254, 254, 254;
-  --shadow: 0px 16px 30px -10px rgba(70, 96, 187, 0.1986);
-  background: rgba(var(--gray));
-}
-
-.dark {
-  --primary: 0, 121, 255;
-  --secondary: 255, 255, 255;
-  --tertiary: 20, 29, 47;
-  --dark: 30, 42, 71;
-  --font-color-1: 255, 255, 255;
-  --bg1: 20, 29, 47;
-  --bg2: 30, 42, 71;
-  --shadow: 'none';
-  background: rgba(var(--tertiary));
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --white: 255, 255, 255;
-    --off-white: 254, 254, 254;
-    --gray: 246, 248, 255;
-    --red: #f74646;
-    // --dark-600: #222731;
-
+  &.default {
     --primary: 0, 121, 255;
     --secondary: 105, 124, 154;
     --tertiary: 75, 106, 155;
@@ -38,6 +9,131 @@
     --bg1: 246, 248, 255;
     --bg2: 254, 254, 254;
     --shadow: 0px 16px 30px -10px rgba(70, 96, 187, 0.1986);
-    background: rgba(var(--gray));
+  }
+  
+  &.blue {
+    --primary: 61, 90, 254;
+    --secondary: 105, 124, 154;
+    --tertiary: 75, 106, 155;
+    --dark: 43, 52, 66;
+    --font-color-1: 75, 106, 155;
+    --bg1: 240, 248, 255;
+    --bg2: 248, 252, 255;
+    --shadow: 0px 16px 30px -10px rgba(61, 90, 254, 0.2);
+  }
+  
+  &.purple {
+    --primary: 128, 0, 128;
+    --secondary: 105, 124, 154;
+    --tertiary: 75, 106, 155;
+    --dark: 43, 52, 66;
+    --font-color-1: 75, 106, 155;
+    --bg1: 250, 240, 255;
+    --bg2: 254, 248, 255;
+    --shadow: 0px 16px 30px -10px rgba(128, 0, 128, 0.2);
+  }
+  
+  &.green {
+    --primary: 46, 204, 113;
+    --secondary: 105, 124, 154;
+    --tertiary: 75, 106, 155;
+    --dark: 43, 52, 66;
+    --font-color-1: 75, 106, 155;
+    --bg1: 240, 255, 244;
+    --bg2: 248, 255, 250;
+    --shadow: 0px 16px 30px -10px rgba(46, 204, 113, 0.2);
+  }
+  
+  &.orange {
+    --primary: 255, 159, 64;
+    --secondary: 105, 124, 154;
+    --tertiary: 75, 106, 155;
+    --dark: 43, 52, 66;
+    --font-color-1: 75, 106, 155;
+    --bg1: 255, 248, 240;
+    --bg2: 255, 252, 248;
+    --shadow: 0px 16px 30px -10px rgba(255, 159, 64, 0.2);
+  }
+  
+  background: rgba(var(--bg1));
+}
+
+// Dark mode themes
+.dark {
+  &.default {
+    --primary: 0, 121, 255;
+    --secondary: 255, 255, 255;
+    --tertiary: 20, 29, 47;
+    --dark: 30, 42, 71;
+    --font-color-1: 255, 255, 255;
+    --bg1: 20, 29, 47;
+    --bg2: 30, 42, 71;
+    --shadow: none;
+  }
+  
+  &.blue {
+    --primary: 61, 90, 254;
+    --secondary: 255, 255, 255;
+    --tertiary: 15, 23, 42;
+    --dark: 30, 41, 59;
+    --font-color-1: 255, 255, 255;
+    --bg1: 15, 23, 42;
+    --bg2: 30, 41, 59;
+    --shadow: none;
+  }
+  
+  &.purple {
+    --primary: 147, 51, 234;
+    --secondary: 255, 255, 255;
+    --tertiary: 42, 16, 71;
+    --dark: 59, 30, 88;
+    --font-color-1: 255, 255, 255;
+    --bg1: 42, 16, 71;
+    --bg2: 59, 30, 88;
+    --shadow: none;
+  }
+  
+  &.green {
+    --primary: 46, 204, 113;
+    --secondary: 255, 255, 255;
+    --tertiary: 20, 46, 36;
+    --dark: 30, 64, 48;
+    --font-color-1: 255, 255, 255;
+    --bg1: 20, 46, 36;
+    --bg2: 30, 64, 48;
+    --shadow: none;
+  }
+  
+  &.orange {
+    --primary: 255, 159, 64;
+    --secondary: 255, 255, 255;
+    --tertiary: 46, 32, 20;
+    --dark: 64, 48, 30;
+    --font-color-1: 255, 255, 255;
+    --bg1: 46, 32, 20;
+    --bg2: 64, 48, 30;
+    --shadow: none;
+  }
+  
+  background: rgba(var(--bg1));
+}
+
+// Backwards compatibility for system preference - only used when no theme is selected
+@media (prefers-color-scheme: dark) {
+  :root {
+    --white: 255, 255, 255;
+    --off-white: 254, 254, 254;
+    --gray: 246, 248, 255;
+    --red: #f74646;
+
+    --primary: 0, 121, 255;
+    --secondary: 255, 255, 255;
+    --tertiary: 20, 29, 47;
+    --dark: 30, 42, 71;
+    --font-color-1: 255, 255, 255;
+    --bg1: 20, 29, 47;
+    --bg2: 30, 42, 71;
+    --shadow: none;
+    background: rgba(var(--bg1));
   }
 }
