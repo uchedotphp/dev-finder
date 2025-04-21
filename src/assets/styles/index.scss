@@ -1,8 +1,15 @@
-// @import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
-@use "./utils/index" as *;
-@use "./globals/index" as *;
-@use "./components/index" as *;
+@use './utils/index' as *;
+@use './globals/index' as *;
+@use './components/index' as *;
 
 @tailwind base;
+#root {
+  height: 100%;
+}
+
+::selection {
+  @apply bg-primary;
+}
+
 @tailwind components;
 @tailwind utilities;

@@ -1,15 +1,43 @@
-:root {
-  /* Light Mode RGB */
-  --light-primary-rgb: 0, 121, 255;
-  --light-secondary-rgb: 105, 124, 154;
-  --light-tertiary-rgb: 75, 106, 155;
-  --light-dark-rgb: 43, 52, 66;
-  --light-background-rgb: 246, 248, 255;
-  --light-white-rgb: 254, 254, 254;
+.light {
+  --primary: 0, 121, 255;
+  --secondary: 105, 124, 154;
+  --tertiary: 75, 106, 155;
+  --dark: 43, 52, 66;
+  --font-color-1: 75, 106, 155;
+  --bg1: 246, 248, 255;
+  --bg2: 254, 254, 254;
+  --shadow: 0px 16px 30px -10px rgba(70, 96, 187, 0.1986);
+  background: rgba(var(--gray));
+}
 
-  /* Dark Mode RGB */
-  --dark-primary-rgb: 0, 121, 255;
-  --dark-white-rgb: 255, 255, 255;
-  --dark-dark-1-rgb: 20, 29, 47;
-  --dark-dark-2-rgb: 30, 42, 71;
+.dark {
+  --primary: 0, 121, 255;
+  --secondary: 255, 255, 255;
+  --tertiary: 20, 29, 47;
+  --dark: 30, 42, 71;
+  --font-color-1: 255, 255, 255;
+  --bg1: 20, 29, 47;
+  --bg2: 30, 42, 71;
+  --shadow: 'none';
+  background: rgba(var(--tertiary));
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --white: 255, 255, 255;
+    --off-white: 254, 254, 254;
+    --gray: 246, 248, 255;
+    --red: #f74646;
+    // --dark-600: #222731;
+
+    --primary: 0, 121, 255;
+    --secondary: 105, 124, 154;
+    --tertiary: 75, 106, 155;
+    --dark: 43, 52, 66;
+    --font-color-1: 75, 106, 155;
+    --bg1: 246, 248, 255;
+    --bg2: 254, 254, 254;
+    --shadow: 0px 16px 30px -10px rgba(70, 96, 187, 0.1986);
+    background: rgba(var(--gray));
+  }
 }

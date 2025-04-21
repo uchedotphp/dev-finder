@@ -1,27 +1,13 @@
+@use './functions' as *;
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
 :root {
   --font-space-mono: "Space Mono", serif;
-}
-
-.space-mono-regular {
-  font-family: var(--font-space-mono);
-  font-weight: 400;
-  font-style: normal;
-}
-
-.space-mono-bold {
-  font-family: var(--font-space-mono);
-  font-weight: 700;
-  font-style: normal;
-}
-
-.space-mono-regular-italic {
-  font-family: var(--font-space-mono);
-  font-weight: 400;
-  font-style: italic;
-}
-
-.space-mono-bold-italic {
-  font-family: var(--font-space-mono);
-  font-weight: 700;
-  font-style: italic;
+  --base-font-size: #{remUnit(16)}; // 16px;
+  --xl-font-size: #{remUnit(26)}; // 26px;
+  --md-font-size: #{remUnit(22)}; // 22px;
+  --sm-font-size: #{remUnit(15)}; // 15px;
+  --xs-font-size: #{remUnit(13)}; // 13px;
+  --xxs-font-size: #{remUnit(11)}; // 13px;
+  font-size: var(--base-font-size);
 }
