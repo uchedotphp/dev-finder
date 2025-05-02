@@ -1,0 +1,59 @@
+:root {
+  --font-family: 'Space Mono', serif;
+}
+
+.space-mono-regular {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-style: normal;
+}
+
+.space-mono-bold {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-style: normal;
+}
+
+.space-mono-regular-italic {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-style: italic;
+}
+
+.space-mono-bold-italic {
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-style: italic;
+}
+
+h1 {
+  font-family: var(--font-family);
+  font-style: normal;
+  font-size: 26px;
+  line-height: 38px;
+  font-weight: 700;
+}
+
+h2 {
+  font-family: var(--font-family);
+  font-style: normal;
+  font-size: 22px;
+  line-height: 33px;
+  font-weight: 700;
+}
+
+h3 {
+  font-family: var(--font-family);
+  font-style: normal;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+}
+
+h4 {
+  font-family: var(--font-family);
+  font-style: normal;
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: 400;
+}
