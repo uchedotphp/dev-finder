@@ -5,7 +5,6 @@ import { ThemeContext } from './state-management/context/themeContext';
 
 interface NavbarProps {
   title: string;
-  currentMode: string;
 }
 
 const Navbar = ({ title }: NavbarProps) => {
@@ -20,6 +19,7 @@ const Navbar = ({ title }: NavbarProps) => {
   }
   
   const { mode } = theme;
+  const iconSize = 20;
   
   return (
     <nav className="w-full flex justify-between items-center">
@@ -28,20 +28,20 @@ const Navbar = ({ title }: NavbarProps) => {
       <div className="flex items-center">
         {mode === 'dark' && (
           <span className="flex items-center space-x-3 text-font-1">
-            <IoMoon size="20" />
+            <IoMoon size={iconSize} />
           </span>
         )}
         {mode === 'light' && (
           <span className="flex items-center space-x-3 text-font-1">
-            <IoSunny size="20" />
+            <IoSunny size={iconSize} />
           </span>
         )}
         {mode === 'system' && (
           <span className="flex items-center space-x-3 text-font-1">
             {window.matchMedia('(prefers-color-scheme: dark)').matches ? (
-              <IoMoon size="20" />
+              <IoMoon size={iconSize} />
             ) : (
-              <IoSunny size="20" />
+              <IoSunny size={iconSize} />
             )}
           </span>
         )}

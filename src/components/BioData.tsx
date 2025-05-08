@@ -13,8 +13,8 @@ const BioData = () => {
           className="rounded-full w-full"
         />
       </div>
-      <div>
-        <div className="flex flex-col lg:flex-row justify-between pb-5">
+      <div className='w-full'>
+        <div className="flex flex-col lg:flex-row justify-between pb-5 w-full">
           <div>
             <h1 className="text-base lg:text-xl text-font-1 font-bold capitalize">
               {user.name}

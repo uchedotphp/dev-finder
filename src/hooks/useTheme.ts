@@ -6,7 +6,7 @@ interface UseThemeProps {
   initialColor?: ThemeColor;
 }
 
-const useTheme = ({ initialMode = 'system', initialColor = 'default' }: UseThemeProps = {}) => {
+const useTheme = ({ initialMode = 'system', initialColor = 'default' }: UseThemeProps) => {
   // Get saved preferences from localStorage or use defaults
   const savedMode = localStorage.getItem('theme-mode') as ThemeMode || initialMode;
   const savedColor = localStorage.getItem('theme-color') as ThemeColor || initialColor;
