@@ -14,6 +14,7 @@ const Button = ({
   children,
   disabled,
   type = 'button',
+  isLoading = false,
   onclick,
 }: ButtonProps) => {
   return (
@@ -23,7 +24,14 @@ const Button = ({
       className={[className, disabled && 'cursor-not-allowed'].join(' ')}
       onClick={onclick}
     >
-      {children}
+      {!isLoading ? (
+        children
+      ) : (
+        <div className="flex items-center justify-center">
+          <div className="animate-spin h-4 w-4 border-2 border-b-transparent rounded-full mr-2"></div>
+          <span>{children}</span>
+        </div>
+      )}
     </button>
   );
 };
