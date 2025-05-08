@@ -11,7 +11,13 @@ const useGetUser = ({ username }: { username: string | undefined }) => {
 
     return useQuery<GithubUser, Error>({
         queryKey: [username],
-        queryFn: () => getUserDetails(username),
+        queryFn: () => {
+            if (!username) {
+                throw new Error('Username is undefined');
+            }
+            return getUserDetails(username);
+        },
+        enabled: !!username, // Prevents the query from running if username is falsy
     });
 }
 
