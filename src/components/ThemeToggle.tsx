@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import Button from './button';
 import {
   ThemeContext,
   ThemeMode,
@@ -36,13 +37,14 @@ export default function ThemeToggle() {
     <section className="theme-toggle">
       <div className="modes">
         {themes.map(({ name, value }) => (
-          <button
+          <Button
+            disabled={!theme}
             key={value}
             className={`mode-btn ${mode === value ? 'active' : ''}`}
-            onClick={() => handleThemeChange(value as ThemeMode)}
+            onclick={() => handleThemeChange(value as ThemeMode)}
           >
             {name}
-          </button>
+          </Button>
         ))}
       </div>
     </section>
