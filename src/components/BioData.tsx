@@ -1,10 +1,9 @@
-import { GithubUser } from '../data';
+import { useUserContext } from './state-management/context/UserContext';
 
-interface BioDataProps {
-  user: GithubUser;
-}
+const BioData = () => {
+  const { user } = useUserContext();
+  if (!user) return null;
 
-const BioData = ({ user }: BioDataProps) => {
   return (
     <section className="flex-none lg:flex gap-[37px] items-start">
       <div className="w-[70px] h-[70px] lg:w-[117px] lg:h-[117px] flex-none">
@@ -14,7 +13,7 @@ const BioData = ({ user }: BioDataProps) => {
           className="rounded-full w-full"
         />
       </div>
-      <div className=''>
+      <div>
         <div className="flex flex-col lg:flex-row justify-between pb-5">
           <div>
             <h1 className="text-base lg:text-xl text-font-1 font-bold capitalize">
