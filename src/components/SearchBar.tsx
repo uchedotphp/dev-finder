@@ -1,40 +1,50 @@
 import { FiSearch } from 'react-icons/fi';
 import Button from './button';
-import { FormEvent, useContext } from 'react';
-import SearchContext from './state-management/context/searchContext';
+import { FormEvent, useState, useEffect } from 'react';
+import useGetUser from '../hooks/useGetUser';
+import { useUserContext } from './state-management/context/UserContext';
 
 interface SearchBarProps {
   buttonTitle?: string;
   searchPlaceholder?: string;
-  errorMessage?: string;
   onClickSearchBtn?: () => string;
-  handleSearch: (param: string) => string;
 }
 
 const SearchBar = ({
   buttonTitle = 'Search',
   searchPlaceholder = 'Search Github username...',
-  errorMessage,
 }: SearchBarProps) => {
-  const { search, dispatch } = useContext(SearchContext);
-  // disables submit button if input is empty
+  const [search, setSearch] = useState<string>('');
+  const [username, setUsername] = useState<string | undefined>(undefined);
+  const { data: user, error, isLoading } = useGetUser({ username });
+  const { setUser } = useUserContext();
+
   const disableSubmitBtn: () => boolean = () => search.trim().length === 0;
 
-  // handles form submission
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    dispatch({ type: 'search', searchQuery: '' });
+    if (search.trim().length === 0) return;
+    setUsername(search);
   };
+
+  useEffect(() => {
+    if (user) {
+      setUser(user); // Update the context with the fetched user data
+    }
+    if (error) {
+      console.error('Error fetching user:', error);
+      setUser(null); // Clear the user data on error
+    }
+  }, [user, error, setUser]);
 
   return (
     <>
-      {errorMessage && (
+      {error && (
         <span className="lg:hidden text-sm text-red font-bold ml-6 mr-3">
-          {errorMessage}
+          {error?.message}
         </span>
       )}
       <form
-        onKeyUp={handleSubmit}
         onSubmit={handleSubmit}
         className="flex items-center w-full bg-bg2 pt-[6.5px] pb-[7.5px] lg:py-[9.5px] pl-4 lg:pl-8 pr-[7px] lg:pr-2.5"
       >
@@ -44,26 +54,24 @@ const SearchBar = ({
 
         <input
           onChange={(event) => {
-            console.log('logging search: ', event.target.value);
-
-            dispatch({ type: 'search', searchQuery: event.target.value });
+            setSearch(event.target.value);
           }}
           value={search}
-          className="w-full bg-transparent placeholder:text-font-1 placeholder:text-xs lg:placeholder:text-[18px] placeholder:font-extralight focus:outline-none caret-primary"
+          className="w-full bg-transparent text-font-1 placeholder:text-xs lg:placeholder:text-[18px] placeholder:font-extralight focus:outline-none caret-primary"
           placeholder={searchPlaceholder}
         />
 
         <span className="flex items-center min-w-fit">
-          {errorMessage && (
+          {error && (
             <span className="hidden lg:block text-sm text-red font-bold ml-6 mr-3">
-              {errorMessage}
+              {error?.message}
             </span>
           )}
 
           <Button
-            onclick={() => {
-              console.log('clicked');
-            }}
+            type="submit"
+            isLoading={isLoading}
+            onclick={() => handleSubmit}
             disabled={disableSubmitBtn()}
             className="bg-primary py-[12.5px] pl-[18px] pr-3.5 lg:pt-[12.5px] lg:py-[13.5px] lg:pl-[24px] lg:pr-[23px] rounded-xs"
           >
