@@ -1,54 +1,47 @@
+import { ReactNode } from 'react';
 import Location from '../assets/images/location-icon.svg';
 import Twitter from '../assets/images/twitter.svg';
 import Building from '../assets/images/office-building.svg';
 import Url from '../assets/images/url.svg';
+import { useUserContext } from './state-management/context/UserContext';
 
-interface SocialsProps {
-  location: string;
-  twitter: string;
-  blogurl: string;
-  company: string;
+export interface SocialsProps {
+  children: ReactNode;
+  name: string;
 }
 
-const Socials = ({ location, twitter, blogurl, company }: SocialsProps) => {
+export const Social = ({ name, children }: SocialsProps) => {
   return (
-    <div className="grid lg:grid-cols-2 gap-4">
-      <div className="flex gap-[13px] lg:flex-none items-center">
-        <span>
-          <img src={Location} alt="location icon" />
-        </span>
-        <p className={[location ? 'text-font-1' : 'text-font-1/50'].join('')}>
-          {location || 'Not Available'}
-        </p>
-      </div>
-
-      <div className="flex gap-[13px] lg:flex-none items-center">
-        <span>
-          <img src={Twitter} alt="twitter icon" />
-        </span>
-        <p className={[twitter ? 'text-font-1' : 'text-font-1/50'].join('')}>
-          {twitter || 'Not Available'}
-        </p>
-      </div>
-
-      <div className="flex gap-[13px] lg:flex-none items-center">
-        <span>
-          <img src={Url} alt="url link" />
-        </span>
-        {blogurl && <p className="text-font-1">{blogurl}</p>}
-        {!blogurl && <p className="text-font-1/50">Not Available</p>}
-      </div>
-
-      <div className="flex gap-[13px] lg:flex-none items-center">
-        <span>
-          <img src={Building} alt="office building" />
-        </span>
-        <p className={[company ? 'text-font-1' : 'text-font-1/50'].join(' ')}>
-          {company || 'Not Available'}
-        </p>
-      </div>
+    <div className="flex gap-[13px] lg:flex-none items-center">
+      <span>{children}</span>
+      <p className={[name ? 'text-font-1' : 'text-font-1/50'].join('')}>
+        {name || 'Not Available'}
+      </p>
     </div>
   );
 };
 
-export default Socials;
+export const Socials = () => {
+  const { user } = useUserContext();
+  if (!user) return null;
+
+  return (
+    <div className="grid lg:grid-cols-2 gap-4">
+      <Social name={user.location}>
+        <img src={Location} alt="location icon" />
+      </Social>
+
+      <Social name={user.twitter_username}>
+        <img src={Twitter} alt="twitter icon" />
+      </Social>
+
+      <Social name={user.blog}>
+        <img src={Url} alt="url link" />
+      </Social>
+
+      <Social name={user.company}>
+        <img src={Building} alt="office building" />
+      </Social>
+    </div>
+  );
+};

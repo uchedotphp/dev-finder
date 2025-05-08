@@ -1,38 +1,34 @@
 import { useNumberFormatter } from '../utilities';
+import { useUserContext } from './state-management/context/UserContext';
 
 interface RepoCountProps {
-  repos: number;
-  followers: number;
-  following: number;
+  name: string;
+  value: string;
 }
 
-const RepoCount = ({ repos, followers, following }: RepoCountProps) => {
+export const SingleRepo = ({ name, value }: RepoCountProps) => {
   return (
-    <section className="rounded-xs bg-bg1 w-full pt-[15px] pb-[17px] px-8 flex items-center justify-between">
-      <div>
-        <h3 className="capitalize text-xxs lg:text-xs font-normal text-font-1">repos</h3>
-        <p className="font-bold text-md text-center lg:text-left text-font-1">
-          {useNumberFormatter(repos)}
-        </p>
-      </div>
-      <div>
-        <h3 className="capitalize text-xxs lg:text-xs font-normal text-font-1">
-          followers
-        </h3>
-        <p className="font-bold text-md text-center lg:text-left text-font-1">
-          {useNumberFormatter(followers)}
-        </p>
-      </div>
-      <div>
-        <h3 className="capitalize text-xxs lg:text-xs font-normal text-font-1">
-          following
-        </h3>
-        <p className="font-bold text-md text-center lg:text-left text-font-1">
-          {useNumberFormatter(following)}
-        </p>
-      </div>
+    <section>
+      <h3 className="capitalize text-xxs lg:text-xs font-normal text-font-1">
+        {name}
+      </h3>
+      <p className="font-bold text-md text-center lg:text-left text-font-1">
+        {useNumberFormatter(parseInt(value))}
+      </p>
     </section>
   );
 };
 
-export default RepoCount;
+export const RepoCount = () => {
+  const { user } = useUserContext();
+  if (!user) return null;
+
+  return (
+    <section className="rounded-xs bg-bg1 w-full pt-[15px] pb-[17px] px-8 flex items-center justify-between">
+      <SingleRepo name="repos" value={user.public_repos} />
+      <SingleRepo name="followers" value={user.followers} />
+      <SingleRepo name="following" value={user.following} />
+    </section>
+  );
+};
+
