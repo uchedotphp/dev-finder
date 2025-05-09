@@ -22,7 +22,7 @@ const Navbar = ({ title }: NavbarProps) => {
   const iconSize = 20;
   
   return (
-    <nav className="w-full flex justify-between items-center">
+    <div className="w-full flex justify-between items-center">
       <h2 className="text-font-1 text-xl tracking-tighter">{title}</h2>
 
       <div className="flex items-center">
@@ -46,7 +46,7 @@ const Navbar = ({ title }: NavbarProps) => {
           </span>
         )}
       </div>
-    </nav>
+    </div>
   );
 };
 
