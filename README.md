@@ -1,4 +1,4 @@
-# Dev Finder
+# Github Dev Finder
 
 A github developer finder application. This project is designed for fast performance, scalability, and maintainability.
 
@@ -7,11 +7,16 @@ A github developer finder application. This project is designed for fast perform
 - Built with React 18 and TypeScript for type safety and modern development practices.
 - Vite for lightning-fast development and build processes.
 - ESLint and Prettier integration for consistent code quality.
-- API integration for fetching developer profiles.
+- Uses React Query and Axios for fetching developer profiles.
+- Uses React Context for sharing state globally.
 
 ## Features
 
-- Responsive design for seamless usage across devices.
+- Search for GitHub users by their username.
+- See relevant user information based on their search.
+- Switch between light, dark and system (light/dark) themes.
+- Toggle between (5) color schemes.
+- View the optimal layout for the app depending on their device's screen size.
 
 ## Getting Started
 
@@ -26,7 +31,7 @@ Follow these steps to set up the project locally:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/dev-finder.git
+   git clone https://github.com/uchedotphp/dev-finder-react
    cd dev-finder
    ```
 
