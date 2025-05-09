@@ -32,7 +32,7 @@ const SearchBar = ({
       setUser(user); // Update the context with the fetched user data
     }
     if (error) {
-      console.error('Error fetching user:', error);
+      console.error('Error fetching user:', error?.message);
       setUser(null); // Clear the user data on error
     }
   }, [user, error, setUser]);
