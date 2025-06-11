@@ -1,6 +1,7 @@
 # Github Dev Finder
 
 A github developer finder application. This project is designed for fast performance, scalability, and maintainability.
+
 [Figma link to the UI design](https://www.figma.com/design/gop0Fakso17bowwsdJJuKx/github-user-search-app?node-id=0-1&p=f&t=UQxrMuj93wTyvbi1-0)
 
 ## Core
