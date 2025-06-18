@@ -16,7 +16,7 @@ const SearchBar = ({
 }: SearchBarProps) => {
   const [search, setSearch] = useState<string>('');
   const [username, setUsername] = useState<string | undefined>(undefined);
-  const { data: user, error, isLoading } = useGetUser({ username });
+  const { data: user, isError, error, isLoading } = useGetUser({ username });
   const { setUser } = useUserContext();
 
   const disableSubmitBtn: () => boolean = () => search.trim().length === 0;
@@ -31,11 +31,11 @@ const SearchBar = ({
     if (user) {
       setUser(user); // Update the context with the fetched user data
     }
-    if (error) {
+    if (isError) {
       console.error('Error fetching user:', error?.message);
       setUser(null); // Clear the user data on error
     }
-  }, [user, error, setUser]);
+  }, [user, error, isError, setUser]);
 
   return (
     <>

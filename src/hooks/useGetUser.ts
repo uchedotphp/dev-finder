@@ -13,7 +13,7 @@ const useGetUser = ({ username }: { username: string | undefined }) => {
         queryKey: [username],
         queryFn: () => {
             if (!username) {
-                throw new Error('Username is undefined');
+                throw new Error('Username is required');
             }
             return getUserDetails(username);
         },
